@@ -9,7 +9,7 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  font-family: "Georgia", serif;
+  font-family: Georgia, serif;
   background:#000;
   color:#f2f2f2;
   overflow-x:hidden;
@@ -66,17 +66,16 @@ section {
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:60px 20px;
+  padding:80px 20px;
 }
 
+/* HERO */
 .hero h1 {
   font-size:3.2rem;
   letter-spacing:4px;
 }
-
 .hero p {
   margin-top:18px;
-  font-size:1.1rem;
   opacity:.7;
 }
 
@@ -84,13 +83,11 @@ section {
 .philosophy {
   background:#050505;
 }
-
 .philosophy h2 {
   font-size:2.2rem;
   letter-spacing:3px;
   margin-bottom:20px;
 }
-
 .philosophy p {
   max-width:600px;
   line-height:1.7;
@@ -103,23 +100,82 @@ section {
   letter-spacing:3px;
   margin-bottom:18px;
 }
-
 .signature p {
   max-width:520px;
   opacity:.7;
   line-height:1.6;
 }
 
+/* PRODUCTS */
+.products {
+  background:#000;
+}
+.products-inner {
+  max-width:1100px;
+  width:100%;
+}
+.products h2 {
+  font-size:2.4rem;
+  letter-spacing:4px;
+  margin-bottom:10px;
+}
+.products-sub {
+  opacity:.6;
+  margin-bottom:50px;
+}
+
+.product-slider {
+  display:flex;
+  gap:40px;
+  overflow-x:auto;
+  padding:40px 20px;
+  scroll-snap-type:x mandatory;
+}
+
+.product-slider::-webkit-scrollbar {
+  height:6px;
+}
+.product-slider::-webkit-scrollbar-thumb {
+  background:#222;
+  border-radius:10px;
+}
+
+.product-card {
+  min-width:280px;
+  background:#050505;
+  border:1px solid #111;
+  padding:40px 30px;
+  scroll-snap-align:center;
+}
+
+.product-card h3 {
+  letter-spacing:3px;
+  margin-bottom:14px;
+}
+
+.price {
+  opacity:.85;
+  margin-bottom:20px;
+}
+
+.notes {
+  font-size:.95rem;
+  opacity:.65;
+  line-height:1.6;
+}
+.notes span {
+  display:block;
+  margin-top:8px;
+}
+
 /* CONTACT */
 .contact {
   background:#050505;
 }
-
 .contact h2 {
   font-size:1.9rem;
   letter-spacing:3px;
 }
-
 .contact p {
   margin-top:16px;
   opacity:.6;
@@ -131,11 +187,9 @@ section {
   50%{opacity:.6;filter:blur(1.6px);}
   100%{opacity:.3;filter:blur(.8px);}
 }
-
 @keyframes fadeOut {
   to{opacity:0;visibility:hidden;}
 }
-
 @keyframes fadeIn {
   to{opacity:1;}
 }
@@ -152,7 +206,7 @@ section {
   </div>
 </div>
 
-<!-- MAIN SITE -->
+<!-- MAIN -->
 <main>
 
 <section class="hero">
@@ -166,9 +220,9 @@ section {
   <div>
     <h2>PHILOSOPHY</h2>
     <p>
-      FLAMVÉ is crafted for those who command attention without noise.
-      A fragrance born from restraint, depth, and silent dominance.
-      Not worn to impress — worn to be remembered.
+      FLAMVÉ is crafted for those who command without noise.
+      A fragrance philosophy built on restraint, depth,
+      and silent authority.
     </p>
   </div>
 </section>
@@ -177,10 +231,51 @@ section {
   <div>
     <h2>SIGNATURE ESSENCE</h2>
     <p>
-      Dark warmth. Controlled fire.  
-      A composition that unfolds slowly — leaving
-      an unmistakable trace long after you’ve left.
+      Controlled fire. Dark warmth.
+      A scent that lingers long after presence fades.
     </p>
+  </div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section class="products">
+  <div class="products-inner">
+    <h2>PRODUCTS</h2>
+    <p class="products-sub">Crafted to be felt, not explained.</p>
+
+    <div class="product-slider">
+
+      <div class="product-card">
+        <h3>CINDER</h3>
+        <div class="price">₹3,999 — 50ml</div>
+        <div class="notes">
+          <span><strong>Top:</strong> Black Pepper, Smoke</span>
+          <span><strong>Heart:</strong> Dark Woods, Vetiver</span>
+          <span><strong>Base:</strong> Ash, Resin, Warm Musk</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <h3>COMMAND</h3>
+        <div class="price">₹4,499 — 50ml</div>
+        <div class="notes">
+          <span><strong>Top:</strong> Cardamom, Heat</span>
+          <span><strong>Heart:</strong> Leather, Spice</span>
+          <span><strong>Base:</strong> Oud, Dry Amber</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <h3>QUIET ASH</h3>
+        <div class="price">₹3,699 — 50ml</div>
+        <div class="notes">
+          <span><strong>Top:</strong> Mineral Smoke</span>
+          <span><strong>Heart:</strong> Sandalwood</span>
+          <span><strong>Base:</strong> Soft Ash, Skin Musk</span>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
