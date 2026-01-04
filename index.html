@@ -1,38 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>FLAMVÉ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FLAMVÉ — Dominance in Silence</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    * {
       margin: 0;
-      background: #0b0b0b;
-      color: #f2f2f2;
-      font-family: Georgia, serif;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      overflow: hidden;
+    }
+
+    .container {
       text-align: center;
     }
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    h1 {
+
+    .logo {
       font-size: 4rem;
       letter-spacing: 6px;
+      position: relative;
+      animation: fadeIn 2s ease forwards;
     }
-    p {
-      font-size: 1.2rem;
-      opacity: 0.8;
+
+    .logo::before {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      color: #ff4500;
+      filter: blur(18px);
+      animation: fire 1.2s infinite alternate;
+    }
+
+    .tagline {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 1.8s;
+      letter-spacing: 1px;
+      color: #bdbdbd;
+    }
+
+    @keyframes fire {
+      0% {
+        text-shadow:
+          0 0 10px #ff6a00,
+          0 0 25px #ff4500,
+          0 0 45px #ff0000;
+        transform: translateY(0);
+      }
+      100% {
+        text-shadow:
+          0 0 20px #ff8c00,
+          0 0 40px #ff4500,
+          0 0 70px #ff0000;
+        transform: translateY(-3px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="hero">
-    <h1>FLAMVÉ</h1>
-    <p>Dominance in Silence</p>
+  <div class="container">
+    <div class="logo" data-text="FLAMVÉ">FLAMVÉ</div>
+    <div class="tagline">Dominance in Silence</div>
   </div>
 </body>
 </html>
