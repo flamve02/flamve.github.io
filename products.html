@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FLAMVÉ — Collection</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background:#000;
+  color:#f2f2f2;
+  font-family: "Georgia", serif;
+  overflow-x:hidden;
+}
+
+/* HEADER */
+header {
+  text-align:center;
+  padding:60px 20px 30px;
+}
+
+header h1 {
+  font-size:2.8rem;
+  letter-spacing:4px;
+}
+
+header p {
+  margin-top:12px;
+  opacity:.65;
+  font-size:1rem;
+}
+
+/* SLIDER */
+.slider {
+  display:flex;
+  gap:40px;
+  padding:60px 40px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+}
+
+.slider::-webkit-scrollbar {
+  height:6px;
+}
+.slider::-webkit-scrollbar-thumb {
+  background:#333;
+  border-radius:10px;
+}
+
+.product {
+  min-width:300px;
+  scroll-snap-align:center;
+  background:#050505;
+  padding:40px 30px;
+  text-align:center;
+  border:1px solid #111;
+}
+
+.product h2 {
+  letter-spacing:3px;
+  margin-bottom:14px;
+}
+
+.price {
+  font-size:1.1rem;
+  opacity:.85;
+  margin-bottom:22px;
+}
+
+.notes {
+  font-size:.95rem;
+  opacity:.65;
+  line-height:1.6;
+}
+
+.notes span {
+  display:block;
+  margin-top:8px;
+}
+
+/* BACK */
+.back {
+  text-align:center;
+  padding:40px;
+}
+
+.back a {
+  color:#f2f2f2;
+  text-decoration:none;
+  opacity:.6;
+  letter-spacing:2px;
+}
+
+.back a:hover {
+  opacity:1;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>COLLECTION</h1>
+  <p>Crafted in restraint. Designed to linger.</p>
+</header>
+
+<section class="slider">
+
+  <div class="product">
+    <h2>CINDER</h2>
+    <div class="price">₹3,999 — 50ml</div>
+    <div class="notes">
+      <span><strong>Top:</strong> Black Pepper, Smoke</span>
+      <span><strong>Heart:</strong> Dark Woods, Vetiver</span>
+      <span><strong>Base:</strong> Ash, Resin, Warm Musk</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <h2>COMMAND</h2>
+    <div class="price">₹4,499 — 50ml</div>
+    <div class="notes">
+      <span><strong>Top:</strong> Cardamom, Heat</span>
+      <span><strong>Heart:</strong> Leather, Spice</span>
+      <span><strong>Base:</strong> Oud, Dry Amber</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <h2>QUIET ASH</h2>
+    <div class="price">₹3,699 — 50ml</div>
+    <div class="notes">
+      <span><strong>Top:</strong> Mineral Smoke</span>
+      <span><strong>Heart:</strong> Sandalwood</span>
+      <span><strong>Base:</strong> Soft Ash, Skin Musk</span>
+    </div>
+  </div>
+
+</section>
+
+<div class="back">
+  <a href="index.html">← BACK TO FLAMVÉ</a>
+</div>
+
+</body>
+</html>
