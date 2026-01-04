@@ -230,6 +230,20 @@ section {
   padding-top: 120px;
   padding-bottom: 120px;
 }
+/* FORCE PRODUCTS TO SWIPE HORIZONTALLY ONLY */
+.product-slider {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto;
+  overflow-y: hidden;          /* ⛔ block vertical movement */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-card {
+  flex: 0 0 auto;              /* ⛔ prevent vertical resizing */
+  scroll-snap-align: center;
+}
 
 </style>
 </head>
