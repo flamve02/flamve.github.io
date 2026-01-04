@@ -1,137 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>FLAMVÉ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<title>FLAMVÉ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
 
-    body {
-      height: 100vh;
-      background: #000;
-      font-family: "Georgia", serif;
-      overflow: hidden;
-      color: #f5f5f5;
-    }
+body {
+  font-family: "Georgia", serif;
+  background:#000;
+  color:#f2f2f2;
+  overflow-x:hidden;
+}
 
-    /* INTRO SCREEN */
-    .intro {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at center, #0b0b0b 0%, #000 70%);
-      z-index: 10;
-      animation: introFadeOut 1.2s ease forwards;
-      animation-delay: 2.8s;
-    }
+/* INTRO */
+.intro {
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,#0b0b0b,#000);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+  animation:fadeOut 1.2s ease forwards;
+  animation-delay:2.8s;
+}
 
-    .logo {
-      font-size: 4.5rem;
-      letter-spacing: 6px;
-      position: relative;
-    }
+.logo {
+  font-size:4.5rem;
+  letter-spacing:6px;
+  position:relative;
+}
 
-    .logo::after {
-      content: "FLAMVÉ";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      color: transparent;
-      text-shadow:
-        0 0 6px rgba(255,140,0,0.35),
-        0 0 12px rgba(255,90,0,0.25),
-        0 0 18px rgba(255,40,0,0.15);
-      animation: ember 3.5s infinite ease-in-out;
-      pointer-events: none;
-    }
+.logo::after {
+  content:"FLAMVÉ";
+  position:absolute;
+  inset:0;
+  color:transparent;
+  text-shadow:
+    0 0 6px rgba(255,140,0,0.35),
+    0 0 12px rgba(255,90,0,0.25),
+    0 0 18px rgba(255,40,0,0.15);
+  animation:ember 3.5s infinite ease-in-out;
+}
 
-    .tagline {
-      margin-top: 16px;
-      font-size: 1.05rem;
-      letter-spacing: 1.5px;
-      opacity: 0.75;
-      text-align: center;
-    }
+.tagline {
+  text-align:center;
+  margin-top:14px;
+  opacity:.7;
+  letter-spacing:1.5px;
+}
 
-    /* MAIN PAGE */
-    .main {
-      opacity: 0;
-      animation: mainFadeIn 1.5s ease forwards;
-      animation-delay: 3.6s;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px;
-    }
+/* MAIN */
+main {
+  opacity:0;
+  animation:fadeIn 1.5s ease forwards;
+  animation-delay:3.6s;
+}
 
-    .main h1 {
-      font-size: 3rem;
-      letter-spacing: 4px;
-      margin-bottom: 16px;
-    }
+section {
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 20px;
+}
 
-    .main p {
-      font-size: 1.1rem;
-      opacity: 0.7;
-      max-width: 520px;
-      margin: auto;
-      line-height: 1.6;
-    }
+.hero h1 {
+  font-size:3.2rem;
+  letter-spacing:4px;
+}
 
-    /* ANIMATIONS */
-    @keyframes ember {
-      0%   { opacity: 0.35; filter: blur(0.8px); }
-      50%  { opacity: 0.55; filter: blur(1.6px); }
-      100% { opacity: 0.35; filter: blur(0.8px); }
-    }
+.hero p {
+  margin-top:18px;
+  font-size:1.1rem;
+  opacity:.7;
+}
 
-    @keyframes introFadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
+/* PHILOSOPHY */
+.philosophy {
+  background:#050505;
+}
 
-    @keyframes mainFadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-  </style>
+.philosophy h2 {
+  font-size:2.2rem;
+  letter-spacing:3px;
+  margin-bottom:20px;
+}
+
+.philosophy p {
+  max-width:600px;
+  line-height:1.7;
+  opacity:.75;
+}
+
+/* SIGNATURE */
+.signature h2 {
+  font-size:2rem;
+  letter-spacing:3px;
+  margin-bottom:18px;
+}
+
+.signature p {
+  max-width:520px;
+  opacity:.7;
+  line-height:1.6;
+}
+
+/* CONTACT */
+.contact {
+  background:#050505;
+}
+
+.contact h2 {
+  font-size:1.9rem;
+  letter-spacing:3px;
+}
+
+.contact p {
+  margin-top:16px;
+  opacity:.6;
+}
+
+/* ANIMATIONS */
+@keyframes ember {
+  0%{opacity:.3;filter:blur(.8px);}
+  50%{opacity:.6;filter:blur(1.6px);}
+  100%{opacity:.3;filter:blur(.8px);}
+}
+
+@keyframes fadeOut {
+  to{opacity:0;visibility:hidden;}
+}
+
+@keyframes fadeIn {
+  to{opacity:1;}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- INTRO -->
-  <div class="intro">
-    <div>
-      <div class="logo">FLAMVÉ</div>
-      <div class="tagline">Dominance in Silence</div>
-    </div>
+<!-- INTRO -->
+<div class="intro">
+  <div>
+    <div class="logo">FLAMVÉ</div>
+    <div class="tagline">Dominance in Silence</div>
   </div>
+</div>
 
-  <!-- MAIN PAGE -->
-  <div class="main">
-    <div>
-      <h1>FLAMVÉ</h1>
-      <p>
-        Crafted for those who speak without noise.  
-        A fragrance philosophy rooted in restraint, depth,
-        and undeniable presence.
-      </p>
-    </div>
+<!-- MAIN SITE -->
+<main>
+
+<section class="hero">
+  <div>
+    <h1>FLAMVÉ</h1>
+    <p>Presence is not announced. It is felt.</p>
   </div>
+</section>
+
+<section class="philosophy">
+  <div>
+    <h2>PHILOSOPHY</h2>
+    <p>
+      FLAMVÉ is crafted for those who command attention without noise.
+      A fragrance born from restraint, depth, and silent dominance.
+      Not worn to impress — worn to be remembered.
+    </p>
+  </div>
+</section>
+
+<section class="signature">
+  <div>
+    <h2>SIGNATURE ESSENCE</h2>
+    <p>
+      Dark warmth. Controlled fire.  
+      A composition that unfolds slowly — leaving
+      an unmistakable trace long after you’ve left.
+    </p>
+  </div>
+</section>
+
+<section class="contact">
+  <div>
+    <h2>COMING SOON</h2>
+    <p>Private release. Limited presence.</p>
+  </div>
+</section>
+
+</main>
 
 </body>
 </html>
