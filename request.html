@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FLAMVÉ — Private Order Request</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background:#000;
+  color:#f2f2f2;
+  font-family: Georgia, serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:40px 20px;
+}
+
+.container {
+  max-width:520px;
+  width:100%;
+  text-align:center;
+}
+
+h1 {
+  letter-spacing:4px;
+  font-size:2.2rem;
+}
+
+.subtitle {
+  margin-top:14px;
+  opacity:0.65;
+  line-height:1.6;
+}
+
+.divider {
+  width:60px;
+  height:1px;
+  background:#444;
+  margin:40px auto;
+}
+
+form {
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+input, textarea, select {
+  background:#050505;
+  border:1px solid #111;
+  color:#f2f2f2;
+  padding:14px;
+  font-family:inherit;
+  font-size:0.95rem;
+}
+
+textarea {
+  resize:none;
+  height:90px;
+}
+
+button {
+  margin-top:30px;
+  background:none;
+  border:1px solid #d4af37;
+  color:#d4af37;
+  padding:14px;
+  letter-spacing:2px;
+  cursor:pointer;
+  font-family:inherit;
+}
+
+button:hover {
+  background:#d4af37;
+  color:#000;
+}
+
+.note {
+  margin-top:24px;
+  font-size:0.85rem;
+  opacity:0.45;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>PRIVATE ORDER REQUEST</h1>
+  <p class="subtitle">
+    FLAMVÉ operates on a private release model.  
+    Requests are reviewed and confirmed individually.
+  </p>
+
+  <div class="divider"></div>
+
+  <form onsubmit="sendEmail(); return false;">
+    <input id="name" placeholder="Full Name" required>
+    <input id="email" placeholder="Email Address" required>
+    <input id="phone" placeholder="Phone Number (WhatsApp preferred)" required>
+    <textarea id="address" placeholder="Complete Delivery Address" required></textarea>
+
+    <select id="product" required>
+      <option value="">Select Product</option>
+      <option>Velours de Rose</option>
+      <option>Quiet Ash</option>
+      <option>Obscura Mare</option>
+    </select>
+
+    <button type="submit">SUBMIT REQUEST</button>
+  </form>
+
+  <p class="note">
+    This is not an automated checkout.  
+    Our team will contact you personally.
+  </p>
+</div>
+
+<script>
+function sendEmail() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const product = document.getElementById("product").value;
+
+  const body =
+`Private Order Request — FLAMVÉ
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Product: ${product}
+
+Address:
+${address}`;
+
+  window.location.href =
+    `mailto:flamve02@gmail.com?subject=Private Order Request — ${product}&body=${encodeURIComponent(body)}`;
+}
+</script>
+
+</body>
+</html>
