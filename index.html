@@ -14,24 +14,29 @@
 
     body {
       height: 100vh;
-      background: radial-gradient(circle at center, #0b0b0b 0%, #000 70%);
+      background: #000;
+      font-family: "Georgia", serif;
+      overflow: hidden;
+      color: #f5f5f5;
+    }
+
+    /* INTRO SCREEN */
+    .intro {
+      position: fixed;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: "Georgia", serif;
-      overflow: hidden;
-    }
-
-    .container {
-      text-align: center;
+      background: radial-gradient(circle at center, #0b0b0b 0%, #000 70%);
+      z-index: 10;
+      animation: introFadeOut 1.2s ease forwards;
+      animation-delay: 2.8s;
     }
 
     .logo {
       font-size: 4.5rem;
       letter-spacing: 6px;
-      color: #f5f5f5;
       position: relative;
-      animation: fadeIn 2.5s ease forwards;
     }
 
     .logo::after {
@@ -45,42 +50,88 @@
         0 0 6px rgba(255,140,0,0.35),
         0 0 12px rgba(255,90,0,0.25),
         0 0 18px rgba(255,40,0,0.15);
-      animation: ember 4s infinite ease-in-out;
+      animation: ember 3.5s infinite ease-in-out;
       pointer-events: none;
     }
 
     .tagline {
-      margin-top: 18px;
+      margin-top: 16px;
       font-size: 1.05rem;
       letter-spacing: 1.5px;
-      color: rgba(255,255,255,0.75);
-      opacity: 0;
-      animation: fadeUp 2s ease forwards;
-      animation-delay: 2.2s;
+      opacity: 0.75;
+      text-align: center;
     }
 
+    /* MAIN PAGE */
+    .main {
+      opacity: 0;
+      animation: mainFadeIn 1.5s ease forwards;
+      animation-delay: 3.6s;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .main h1 {
+      font-size: 3rem;
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+
+    .main p {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      max-width: 520px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    /* ANIMATIONS */
     @keyframes ember {
       0%   { opacity: 0.35; filter: blur(0.8px); }
       50%  { opacity: 0.55; filter: blur(1.6px); }
       100% { opacity: 0.35; filter: blur(0.8px); }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.98); }
-      to   { opacity: 1; transform: scale(1); }
+    @keyframes introFadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
+    @keyframes mainFadeIn {
+      to {
+        opacity: 1;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="logo">FLAMVÉ</div>
-    <div class="tagline">Dominance in Silence</div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <div>
+      <div class="logo">FLAMVÉ</div>
+      <div class="tagline">Dominance in Silence</div>
+    </div>
   </div>
+
+  <!-- MAIN PAGE -->
+  <div class="main">
+    <div>
+      <h1>FLAMVÉ</h1>
+      <p>
+        Crafted for those who speak without noise.  
+        A fragrance philosophy rooted in restraint, depth,
+        and undeniable presence.
+      </p>
+    </div>
+  </div>
+
 </body>
 </html>
