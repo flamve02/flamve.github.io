@@ -16,11 +16,12 @@ body{
 
 h1{
   letter-spacing:3px;
+  margin-bottom:20px;
 }
 
 .cart-item{
   background:#fff;
-  padding:15px;
+  padding:18px;
   margin:15px 0;
   border:1px solid #E2DED8;
   display:flex;
@@ -34,6 +35,7 @@ button{
   background:#1A1A1A;
   color:#fff;
   cursor:pointer;
+  font-size:0.9rem;
 }
 
 button:hover{
@@ -42,25 +44,32 @@ button:hover{
 
 .total{
   font-size:1.3rem;
-  margin-top:20px;
+  margin-top:25px;
   color:#BFA35A;
 }
 
 input, textarea{
   width:100%;
   padding:12px;
-  margin-top:10px;
+  margin-top:12px;
   border:1px solid #ccc;
   font-family:inherit;
 }
 
 .checkout{
-  margin-top:25px;
+  margin-top:30px;
   padding:14px;
   width:100%;
   background:#1A1A1A;
   color:#fff;
   font-size:1rem;
+  letter-spacing:1px;
+}
+
+.note{
+  margin-top:20px;
+  font-size:0.9rem;
+  color:#6b6761;
 }
 </style>
 </head>
@@ -81,9 +90,14 @@ input, textarea{
 <input type="text" id="phone" placeholder="Phone Number" required>
 <textarea id="address" placeholder="Full Address" required></textarea>
 
-<button class="checkout" onclick="proceedToPayment()">
-Proceed to Secure UPI Payment
+<button class="checkout" onclick="placeOrder()">
+Place Order on WhatsApp
 </button>
+
+<div class="note">
+After clicking, you will be redirected to WhatsApp to confirm your order.
+Payment QR will be shared there.
+</div>
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -129,7 +143,7 @@ function removeItem(index){
   renderCart();
 }
 
-function proceedToPayment(){
+function placeOrder(){
 
   if(cart.length === 0){
     alert("Your cart is empty.");
@@ -147,33 +161,32 @@ function proceedToPayment(){
 
   let orderDetails = "";
   cart.forEach(item => {
-    orderDetails += `${item.name} - ₹${item.price} x ${item.quantity}\n`;
+    orderDetails += `• ${item.name} — ₹${item.price} x ${item.quantity}\n`;
   });
 
+  let orderID = "FLV" + Math.floor(100000 + Math.random() * 900000);
+
   let message =
-`FLAMVÉ Order Confirmation
+`FLAMVÉ Order Request
+
+Order ID: ${orderID}
 
 Name: ${name}
 Phone: ${phone}
 Address: ${address}
 
-Order:
+Items:
 ${orderDetails}
 
-Total Paid: ₹${total}
+Total Amount: ₹${total}
 
-UPI ID: 9560138453@pthdfc`;
+Please share payment QR.`;
 
   let encodedMessage = encodeURIComponent(message);
 
-  // Open UPI first
-  window.location.href = `upi://pay?pa=9560138453@pthdfc&pn=FLAMVE&am=${total}&cu=INR`;
+  window.open(`https://wa.me/919560138453?text=${encodedMessage}`, '_blank');
 
-  // After 3 seconds open WhatsApp
-  setTimeout(function(){
-    window.open(`https://wa.me/919560138453?text=${encodedMessage}`, '_blank');
-    localStorage.removeItem("cart");
-  }, 3000);
+  localStorage.removeItem("cart");
 }
 
 renderCart();
