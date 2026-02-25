@@ -147,8 +147,23 @@ button:hover{
 
 <script>
 function addToCart(){
-  localStorage.setItem("cartItem","Obscura Mare - ₹799");
-  alert("Obscura Mare added to cart.");
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let existing = cart.find(item => item.name === "Obscura Mare");
+
+  if(existing){
+    existing.quantity += 1;
+  } else {
+    cart.push({
+      name: "Obscura Mare",
+      price: 799,
+      quantity: 1
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert("Added to cart");
 }
 </script>
 
