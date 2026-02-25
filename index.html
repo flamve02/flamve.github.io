@@ -103,7 +103,14 @@ button:hover{
 <body>
 
 <header>
-  <div class="logo">FLAMVÉ</div>
+  <div class="logo">
+    FLAMVÉ
+  </div>
+
+  <a href="cart.html" 
+     style="text-decoration:none; font-weight:bold; background:#1A1A1A; color:#fff; padding:10px 18px; border-radius:2px;">
+    🛒 Cart (<span id="cart-count">0</span>)
+  </a>
 </header>
 
 <section class="hero">
@@ -132,6 +139,7 @@ creating a sophisticated scent journey from first spray to final dry-down.
 We are not just delivering a fragrance; we are delivering olfactory depth.
 This complexity builds long-term loyalty and establishes a true signature presence.
 </p>
+
   <div class="products">
 
     <div class="card">
@@ -152,7 +160,7 @@ This complexity builds long-term loyalty and establishes a true signature presen
 
     <div class="card">
       <a href="ash.html">
-        <img src="quiet%20ash.jpg" alt="Quiet Ash">
+        <img src="quietash.jpg" alt="Quiet Ash">
       </a>
       <h3>QUIET ASH</h3>
       <button onclick="location.href='ash.html'">View Details</button>
@@ -160,6 +168,15 @@ This complexity builds long-term loyalty and establishes a true signature presen
 
   </div>
 </section>
+
+<!-- CART COUNT SCRIPT (MUST BE HERE) -->
+<script>
+function updateCartCount(){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  document.getElementById("cart-count").innerText = cart.length;
+}
+updateCartCount();
+</script>
 
 </body>
 </html>
