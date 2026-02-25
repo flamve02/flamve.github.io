@@ -16,6 +16,7 @@ body{
 
 h1{
   letter-spacing:3px;
+  margin-bottom:20px;
 }
 
 .cart-item{
@@ -55,9 +56,12 @@ input, textarea{
 }
 
 .checkout{
-  margin-top:20px;
+  margin-top:25px;
   padding:14px;
   width:100%;
+  background:#1A1A1A;
+  color:#fff;
+  font-size:1rem;
 }
 </style>
 </head>
@@ -74,18 +78,13 @@ input, textarea{
 
 <h2 style="margin-top:40px;">Shipping Details</h2>
 
-<form id="order-form" action="https://formsubmit.co/flamve02@gmail.com" method="POST">
-<input type="hidden" name="_subject" value="New FLAMVE Order">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="Order Details" id="order-details">
-<input type="hidden" name="Total Amount" id="total-amount">
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="text" id="phone" placeholder="Phone Number" required>
+<textarea id="address" placeholder="Full Address" required></textarea>
 
-<input type="text" name="Full Name" placeholder="Full Name" required>
-<input type="text" name="Phone" placeholder="Phone Number" required>
-<textarea name="Address" placeholder="Full Address" required></textarea>
-
-<button type="submit" class="checkout">Proceed to Secure UPI Payment</button>
-</form>
+<button class="checkout" onclick="sendOrder()">
+Place Order via WhatsApp
+</button>
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -131,26 +130,45 @@ function removeItem(index){
   renderCart();
 }
 
-document.getElementById("order-form").addEventListener("submit", function(e){
+function sendOrder(){
 
   if(cart.length === 0){
     alert("Your cart is empty.");
-    e.preventDefault();
     return;
   }
 
-  let orderText = "";
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+
+  if(!name || !phone || !address){
+    alert("Please fill all shipping details.");
+    return;
+  }
+
+  let orderDetails = "";
   cart.forEach(item => {
-    orderText += `${item.name} - ₹${item.price} x ${item.quantity}\n`;
+    orderDetails += `${item.name} - ₹${item.price} x ${item.quantity}\n`;
   });
 
-  document.getElementById("order-details").value = orderText;
-  document.getElementById("total-amount").value = total;
+  let message =
+`FLAMVÉ New Order
 
-  setTimeout(function(){
-    window.location.href = `upi://pay?pa=9560138453@pthdfc&pn=FLAMVE&am=${total}&cu=INR`;
-  }, 800);
-});
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+Order:
+${orderDetails}
+
+Total: ₹${total}
+
+UPI ID: 9560138453@pthdfc`;
+
+  let encodedMessage = encodeURIComponent(message);
+
+  window.open(`https://wa.me/919560138453?text=${encodedMessage}`, '_blank');
+}
 
 renderCart();
 </script>
