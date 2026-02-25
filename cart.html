@@ -10,34 +10,39 @@ body{
   font-family: Georgia, serif;
   background:#F2EFEA;
   color:#1A1A1A;
+  margin:0;
   padding:40px;
 }
 
 h1{
   letter-spacing:3px;
-  margin-bottom:30px;
 }
 
 .cart-item{
+  background:#fff;
+  padding:15px;
+  margin:15px 0;
+  border:1px solid #E2DED8;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:20px;
-  background:#fff;
-  padding:15px;
-  border:1px solid #E2DED8;
 }
 
-.cart-item button{
-  background:#BFA35A;
+button{
+  padding:6px 12px;
   border:none;
-  padding:6px 10px;
+  background:#1A1A1A;
+  color:#fff;
   cursor:pointer;
+}
+
+button:hover{
+  opacity:.85;
 }
 
 .total{
   font-size:1.3rem;
-  margin-top:30px;
+  margin-top:20px;
   color:#BFA35A;
 }
 
@@ -49,19 +54,10 @@ input, textarea{
   font-family:inherit;
 }
 
-.checkout-btn{
+.checkout{
   margin-top:20px;
   padding:14px;
   width:100%;
-  background:#1A1A1A;
-  color:#fff;
-  border:none;
-  font-size:1rem;
-  cursor:pointer;
-}
-
-.checkout-btn:hover{
-  opacity:.9;
 }
 </style>
 </head>
@@ -79,21 +75,16 @@ input, textarea{
 <h2 style="margin-top:40px;">Shipping Details</h2>
 
 <form id="order-form" action="https://formsubmit.co/flamve02@gmail.com" method="POST">
-
 <input type="hidden" name="_subject" value="New FLAMVE Order">
 <input type="hidden" name="_captcha" value="false">
-
-<input type="text" name="Full Name" id="name" placeholder="Full Name" required>
-<input type="text" name="Phone" id="phone" placeholder="Phone Number" required>
-<textarea name="Address" id="address" placeholder="Full Address" required></textarea>
-
 <input type="hidden" name="Order Details" id="order-details">
 <input type="hidden" name="Total Amount" id="total-amount">
 
-<button type="submit" class="checkout-btn">
-Proceed to Secure UPI Payment
-</button>
+<input type="text" name="Full Name" placeholder="Full Name" required>
+<input type="text" name="Phone" placeholder="Phone Number" required>
+<textarea name="Address" placeholder="Full Address" required></textarea>
 
+<button type="submit" class="checkout">Proceed to Secure UPI Payment</button>
 </form>
 
 <script>
@@ -159,7 +150,6 @@ document.getElementById("order-form").addEventListener("submit", function(e){
   setTimeout(function(){
     window.location.href = `upi://pay?pa=9560138453@pthdfc&pn=FLAMVE&am=${total}&cu=INR`;
   }, 800);
-
 });
 
 renderCart();
