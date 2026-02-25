@@ -9,19 +9,17 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family: 'Georgia', serif;
+  font-family: Georgia, serif;
   background:#F2EFEA;
   color:#1A1A1A;
 }
 
-/* HEADER */
 header{
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:25px 40px;
   border-bottom:1px solid #ddd;
-  background:#F2EFEA;
 }
 
 .logo{
@@ -29,76 +27,32 @@ header{
   letter-spacing:5px;
 }
 
-.menu-btn{
-  cursor:pointer;
-  font-size:1.5rem;
-}
-
-/* SIDE MENU */
-.side-menu{
-  position:fixed;
-  right:-260px;
-  top:0;
-  width:240px;
-  height:100%;
-  background:#E7E2DB;
-  padding:40px 25px;
-  transition:.4s;
-  box-shadow:-3px 0 10px rgba(0,0,0,0.05);
-}
-
-.side-menu.active{
-  right:0;
-}
-
-.side-menu a{
-  display:block;
-  margin-bottom:25px;
-  text-decoration:none;
-  color:#1A1A1A;
-  letter-spacing:2px;
-  font-size:.9rem;
-}
-
-.side-menu a:hover{
-  color:#BFA35A;
-}
-
-/* HERO */
 .hero{
   text-align:center;
-  padding:100px 20px 80px;
+  padding:80px 20px;
 }
 
 .hero h1{
-  font-size:2.6rem;
+  font-size:2.4rem;
   letter-spacing:4px;
 }
 
-.hero p{
-  margin-top:15px;
-  color:#5E5A55;
-}
-
-/* SECTION */
 .section{
-  padding:70px 20px;
+  padding:60px 20px;
   max-width:1200px;
   margin:auto;
 }
 
 .section h2{
-  margin-bottom:35px;
+  margin-bottom:30px;
   letter-spacing:3px;
-  font-weight:normal;
   border-bottom:1px solid #ddd;
   padding-bottom:10px;
 }
 
-/* PRODUCT GRID */
 .products{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:30px;
 }
 
@@ -106,8 +60,8 @@ header{
   background:#FFFFFF;
   padding:25px;
   border:1px solid #E2DED8;
-  transition:.3s;
   text-align:center;
+  transition:.3s;
 }
 
 .card:hover{
@@ -116,7 +70,7 @@ header{
 
 .card img{
   width:100%;
-  max-width:200px;
+  max-width:220px;
   margin-bottom:15px;
 }
 
@@ -126,7 +80,7 @@ header{
 }
 
 button{
-  padding:9px 18px;
+  padding:8px 18px;
   background:#BFA35A;
   border:none;
   cursor:pointer;
@@ -138,13 +92,9 @@ button:hover{
   opacity:.85;
 }
 
-/* MOBILE */
 @media(max-width:768px){
-  header{
-    padding:20px;
-  }
   .hero h1{
-    font-size:1.9rem;
+    font-size:1.8rem;
   }
 }
 </style>
@@ -154,28 +104,19 @@ button:hover{
 
 <header>
   <div class="logo">FLAMVÉ</div>
-  <div class="menu-btn" onclick="toggleMenu()">⋮</div>
 </header>
-
-<div class="side-menu" id="menu">
-  <a href="#">HOME</a>
-  <a href="#">OUR PERFUMES</a>
-  <a href="#">UPCOMING</a>
-</div>
 
 <section class="hero">
   <h1>Crafted to Be Remembered</h1>
-  <p>Premium fragrance. Honest pricing. Elevated identity.</p>
 </section>
 
-<!-- SIGNATURE -->
 <section class="section">
   <h2>SIGNATURE</h2>
   <div class="products">
 
     <div class="card">
       <a href="velours.html">
-        <img src="velours de rose.jpg" alt="Velours de Rose">
+        <img src="velours%20de%20rose.jpg" alt="Velours de Rose">
       </a>
       <h3>VELOURS DE ROSE</h3>
       <button onclick="location.href='velours.html'">View Details</button>
@@ -183,7 +124,7 @@ button:hover{
 
     <div class="card">
       <a href="mare.html">
-        <img src="obscura mare.jpg" alt="Obscura Mare">
+        <img src="obscura%20mare.jpg" alt="Obscura Mare">
       </a>
       <h3>OBSCURA MARE</h3>
       <button onclick="location.href='mare.html'">View Details</button>
@@ -191,7 +132,7 @@ button:hover{
 
     <div class="card">
       <a href="ash.html">
-        <img src="quiet ash.jpg" alt="Quiet Ash">
+        <img src="quietash.jpg" alt="Quiet Ash">
       </a>
       <h3>QUIET ASH</h3>
       <button onclick="location.href='ash.html'">View Details</button>
@@ -199,52 +140,6 @@ button:hover{
 
   </div>
 </section>
-
-<!-- LINEAR -->
-<section class="section">
-  <h2>LINEAR</h2>
-  <div class="products">
-
-    <div class="card">
-      <a href="orange.html">
-        <img src="orange.jpg" alt="Orange Blast">
-      </a>
-      <h3>ORANGE BLAST</h3>
-      <button onclick="location.href='orange.html'">View Details</button>
-    </div>
-
-  </div>
-</section>
-
-<!-- TESTERS -->
-<section class="section">
-  <h2>TESTERS & COMBOS</h2>
-  <div class="products">
-
-    <div class="card">
-      <a href="tester.html">
-        <img src="tester.jpg" alt="Tester Set">
-      </a>
-      <h3>SIGNATURE TESTER SET</h3>
-      <button onclick="location.href='tester.html'">View Details</button>
-    </div>
-
-    <div class="card">
-      <a href="combo.html">
-        <img src="combo.jpg" alt="Combo Pack">
-      </a>
-      <h3>COMBO PACK</h3>
-      <button onclick="location.href='combo.html'">View Details</button>
-    </div>
-
-  </div>
-</section>
-
-<script>
-function toggleMenu(){
-  document.getElementById("menu").classList.toggle("active");
-}
-</script>
 
 </body>
 </html>
