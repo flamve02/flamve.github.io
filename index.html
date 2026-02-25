@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FLAMVÉ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family: 'Georgia', serif;
+  background:#111;
+  color:#F3EFE7;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 30px;
+  border-bottom:1px solid #1f1f1f;
+}
+
+.logo{
+  font-size:1.6rem;
+  letter-spacing:5px;
+}
+
+.menu-btn{
+  cursor:pointer;
+  font-size:1.5rem;
+}
+
+/* SIDE MENU */
+.side-menu{
+  position:fixed;
+  right:-280px;
+  top:0;
+  width:250px;
+  height:100%;
+  background:#151515;
+  padding:40px 20px;
+  transition:.4s;
+  border-left:1px solid #222;
+}
+
+.side-menu.active{
+  right:0;
+}
+
+.side-menu a{
+  display:block;
+  color:#F3EFE7;
+  text-decoration:none;
+  margin-bottom:25px;
+  letter-spacing:2px;
+  font-size:.9rem;
+}
+
+.side-menu a:hover{
+  color:#C6A75E;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.hero h1{
+  font-size:2.5rem;
+  letter-spacing:4px;
+}
+
+.hero p{
+  margin-top:15px;
+  color:#9A948A;
+}
+
+/* SECTIONS */
+.section{
+  padding:60px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.section h2{
+  margin-bottom:30px;
+  letter-spacing:3px;
+  font-weight:normal;
+  border-bottom:1px solid #222;
+  padding-bottom:10px;
+}
+
+/* PRODUCT GRID */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:#181818;
+  padding:25px;
+  border:1px solid #222;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+}
+
+.card h3{
+  margin-bottom:8px;
+  letter-spacing:2px;
+}
+
+.price{
+  margin-bottom:15px;
+  color:#C6A75E;
+}
+
+button{
+  padding:8px 18px;
+  background:#C6A75E;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
+  color:#111;
+}
+
+button:hover{
+  opacity:.85;
+}
+
+/* CART */
+.cart{
+  position:fixed;
+  left:-320px;
+  top:0;
+  width:300px;
+  height:100%;
+  background:#151515;
+  padding:20px;
+  transition:.4s;
+  border-right:1px solid #222;
+  overflow-y:auto;
+}
+
+.cart.active{
+  left:0;
+}
+
+.cart h3{
+  margin-bottom:20px;
+}
+
+.checkout{
+  margin-top:20px;
+  display:block;
+  text-align:center;
+  padding:12px;
+  background:#25D366;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1{
+    font-size:1.8rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">FLAMVÉ</div>
+  <div class="menu-btn" onclick="toggleMenu()">⋮</div>
+</header>
+
+<div class="side-menu" id="menu">
+  <a href="#">HOME</a>
+  <a href="#">OUR PERFUMES</a>
+  <a href="#">UPCOMING</a>
+  <a href="#" onclick="toggleCart()">CART</a>
+</div>
+
+<section class="hero">
+  <h1>Crafted to Be Remembered</h1>
+  <p>Premium fragrance. Honest pricing. Elevated identity.</p>
+</section>
+
+<section class="section">
+  <h2>SIGNATURE — ₹800</h2>
+  <div class="products">
+    <div class="card">
+      <h3>COCOA EMBER</h3>
+      <div class="price">₹800</div>
+      <button onclick="addToCart('Cocoa Ember',800)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <h3>CRÈME VANILLA</h3>
+      <div class="price">₹800</div>
+      <button onclick="addToCart('Crème Vanilla',800)">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>LINEAR — ₹400</h2>
+  <div class="products">
+    <div class="card">
+      <h3>ORANGE BLAST</h3>
+      <div class="price">₹400</div>
+      <button onclick="addToCart('Orange Blast',400)">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>TESTERS & COMBOS</h2>
+  <div class="products">
+    <div class="card">
+      <h3>Signature Tester Set</h3>
+      <div class="price">₹299</div>
+      <button onclick="addToCart('Signature Tester Set',299)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <h3>Combo Pack</h3>
+      <div class="price">₹1499</div>
+      <button onclick="addToCart('Combo Pack',1499)">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<div class="cart" id="cart">
+  <h3>Your Cart</h3>
+  <div id="cartItems"></div>
+  <a id="checkoutBtn" class="checkout" target="_blank">
+    Checkout on WhatsApp
+  </a>
+</div>
+
+<script>
+let cart=[];
+
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
+}
+
+function toggleCart(){
+  document.getElementById("cart").classList.toggle("active");
+}
+
+function addToCart(name,price){
+  cart.push({name,price});
+  updateCart();
+  toggleCart();
+}
+
+function updateCart(){
+  let container=document.getElementById("cartItems");
+  container.innerHTML="";
+  let total=0;
+
+  cart.forEach(item=>{
+    container.innerHTML+=`<div>${item.name} — ₹${item.price}</div>`;
+    total+=item.price;
+  });
+
+  container.innerHTML+=`<hr>Total: ₹${total}`;
+
+  let message="Hello, I want to order:%0A";
+  cart.forEach(item=>{
+    message+=`${item.name} - ₹${item.price}%0A`;
+  });
+  message+=`Total: ₹${total}`;
+
+  document.getElementById("checkoutBtn").href=
+    "https://wa.me/91XXXXXXXXXX?text="+message;
+}
+</script>
+
+</body>
+</html>
