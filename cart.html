@@ -16,7 +16,6 @@ body{
 
 h1{
   letter-spacing:3px;
-  margin-bottom:20px;
 }
 
 .cart-item{
@@ -30,7 +29,7 @@ h1{
 }
 
 button{
-  padding:6px 12px;
+  padding:8px 14px;
   border:none;
   background:#1A1A1A;
   color:#fff;
@@ -63,6 +62,20 @@ input, textarea{
   color:#fff;
   font-size:1rem;
 }
+
+.fallback{
+  margin-top:25px;
+  padding:20px;
+  background:#fff;
+  border:1px solid #E2DED8;
+}
+
+.upi-box{
+  margin-top:10px;
+  padding:10px;
+  background:#F8F6F2;
+  border:1px dashed #ccc;
+}
 </style>
 </head>
 
@@ -82,9 +95,22 @@ input, textarea{
 <input type="text" id="phone" placeholder="Phone Number" required>
 <textarea id="address" placeholder="Full Address" required></textarea>
 
-<button class="checkout" onclick="sendOrder()">
+<button class="checkout" onclick="placeOrder()">
 Place Order via WhatsApp
 </button>
+
+<div class="fallback">
+  <strong>Desktop User?</strong>
+  <p>If WhatsApp does not open, complete payment using UPI below and send screenshot on WhatsApp.</p>
+
+  <div class="upi-box">
+    UPI ID: <strong>9560138453@pthdfc</strong>
+  </div>
+
+  <button style="margin-top:10px;" onclick="openUPI()">
+    Open UPI Payment (Mobile)
+  </button>
+</div>
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -130,7 +156,7 @@ function removeItem(index){
   renderCart();
 }
 
-function sendOrder(){
+function placeOrder(){
 
   if(cart.length === 0){
     alert("Your cart is empty.");
@@ -168,6 +194,15 @@ UPI ID: 9560138453@pthdfc`;
   let encodedMessage = encodeURIComponent(message);
 
   window.open(`https://wa.me/919560138453?text=${encodedMessage}`, '_blank');
+}
+
+function openUPI(){
+  if(total === 0){
+    alert("Cart is empty.");
+    return;
+  }
+
+  window.location.href = `upi://pay?pa=9560138453@pthdfc&pn=FLAMVE&am=${total}&cu=INR`;
 }
 
 renderCart();
